@@ -400,11 +400,12 @@ compare_bits (const void *pva,
 static int
 add_to_family (PyObject *result, int family, PyObject *dict)
 {
+  PyObject *py_family, *list;
   if (!PyDict_Size (dict))
     return TRUE;
 
-  PyObject *py_family = PyInt_FromLong (family);
-  PyObject *list = PyDict_GetItem (result, py_family);
+  py_family = PyInt_FromLong (family);
+  list = PyDict_GetItem (result, py_family);
 
   if (!py_family) {
     Py_DECREF (dict);
